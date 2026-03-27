@@ -1,6 +1,7 @@
 {
   "name": "entity-insight-studio",
   "version": "0.1.0",
+  "description": "Next.js analytics studio with overview dashboard, ownership graph, and scenario explorer over fixture-backed data.",
   "private": true,
   "scripts": {
     "dev": "next dev",
