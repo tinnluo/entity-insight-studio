@@ -1,0 +1,23 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./public/demo-data:/app/fixtures:ro
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      USE_API: "true"
+      API_BASE_URL: http://api:8000
+      NEXT_PUBLIC_API_URL: http://localhost:8000
+    depends_on:
+      - api
+

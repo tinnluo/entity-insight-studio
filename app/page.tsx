@@ -7,7 +7,9 @@ import {
   Radar,
   Sparkles,
 } from "lucide-react";
-import { DEFAULT_ENTITY_SLUG, getEntityBySlug } from "@/lib/demo-data";
+import { DEFAULT_ENTITY_SLUG, getEntityBySlug } from "@/lib/server-data";
+
+export const dynamic = "force-dynamic";
 
 const featureCards = [
   {

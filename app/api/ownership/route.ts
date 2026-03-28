@@ -1,4 +1,4 @@
-import { getOwnershipPayload } from "@/lib/demo-data";
+import { getOwnershipPayload } from "@/lib/server-data";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);

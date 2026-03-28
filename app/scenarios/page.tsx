@@ -3,7 +3,7 @@ import { StudioShell } from "@/components/studio-shell";
 import {
   getEntityOptions,
   getScenarioPayload,
-} from "@/lib/demo-data";
+} from "@/lib/server-data";
 
 type PageProps = {
   searchParams: Promise<Record<string, string | string[] | undefined>>;

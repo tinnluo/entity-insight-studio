@@ -1,0 +1,9 @@
+.git
+.github
+.next
+node_modules
+npm-debug.log
+Dockerfile
+api/__pycache__
+api/tests/__pycache__
+

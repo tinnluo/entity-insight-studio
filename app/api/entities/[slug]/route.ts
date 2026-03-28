@@ -1,4 +1,4 @@
-import { getOverviewPayload } from "@/lib/demo-data";
+import { getOverviewPayload } from "@/lib/server-data";
 
 type RouteContext = {
   params: Promise<{

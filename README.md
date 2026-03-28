@@ -35,6 +35,14 @@ It removes everything that would distract from a public demo:
 - `Relationship graph`: ownership and control structure for the selected entity
 - `Scenario explorer`: baseline vs planned pathways against benchmark trajectories
 
+## Architecture
+
+```text
+Browser -> Next.js (port 3000) -> FastAPI (port 8000) -> JSON fixtures
+```
+
+The frontend still works in fixture mode with no env vars. When `USE_API=true`, the Next.js server swaps to the FastAPI backend and keeps the same UI contracts.
+
 ## Tech Stack
 
 - Next.js App Router
@@ -42,6 +50,8 @@ It removes everything that would distract from a public demo:
 - Tailwind CSS
 - Recharts
 - React Flow
+- FastAPI
+- Docker / Docker Compose
 
 ## Local Development
 
@@ -52,12 +62,26 @@ npm run dev
 
 Open `http://localhost:3000`.
 
+## Quick Start
+
+```bash
+# Option A: fixture mode (no env required)
+npm install && npm run dev
+
+# Option B: full two-service mode
+docker compose up --build
+```
+
+In two-service mode the web container enables `USE_API=true`, reads the backend over `API_BASE_URL=http://api:8000`, and keeps `NEXT_PUBLIC_API_URL=http://localhost:8000` available for host-facing references.
+
 ## Verification
 
 ```bash
 npm run verify:fixtures
 npm run lint
 npm run build
+pytest api/tests
+ruff check api
 ```
 
 ## Data Model
@@ -69,7 +93,7 @@ All runtime data is checked into `public/demo-data`:
 - `assets.json`
 - `scenarios.json`
 
-The app reads these fixtures through typed helpers in `lib/demo-data.ts`. Thin API routes expose entity options, overview payloads, ownership payloads, and scenario series so the visual components stay simple.
+The app reads these fixtures through typed helpers in `lib/demo-data.ts` for local mode. In API mode, a shared server-side adapter switches those same UI calls to FastAPI endpoints. Thin Next.js API routes still expose entity options, overview payloads, ownership payloads, and scenario series so the visual components stay simple.
 
 ## Scope Notes
 

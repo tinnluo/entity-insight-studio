@@ -75,8 +75,13 @@ async function loadDataset(): Promise<Dataset> {
   return datasetPromise;
 }
 
-export async function getEntityOptions(): Promise<EntityOption[]> {
+export async function getEntities(): Promise<EntityRecord[]> {
   const { entities } = await loadDataset();
+  return entities;
+}
+
+export async function getEntityOptions(): Promise<EntityOption[]> {
+  const entities = await getEntities();
 
   return entities.map((entity) => ({
     id: entity.id,

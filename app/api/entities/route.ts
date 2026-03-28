@@ -1,4 +1,4 @@
-import { getEntityOptions } from "@/lib/demo-data";
+import { getEntityOptions } from "@/lib/server-data";
 
 export async function GET() {
   const options = await getEntityOptions();

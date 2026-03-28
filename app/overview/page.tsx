@@ -6,7 +6,7 @@ import { StudioShell } from "@/components/studio-shell";
 import {
   getEntityOptions,
   getOverviewPayload,
-} from "@/lib/demo-data";
+} from "@/lib/server-data";
 
 type PageProps = {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
